@@ -1,0 +1,5 @@
+docs1:
+  foreword:
+    foreword: index.html
+  charpter1: 
+    page0: charpter1/page0.html

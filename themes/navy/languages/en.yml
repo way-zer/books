@@ -1,0 +1,13 @@
+menu:
+  blog: Blog
+  docs1: Introduce to JS for Beginer
+  about: About
+  search: Search
+
+page:
+  contents: Contents
+  back_to_top: Back to Top
+  improve: Improve this doc
+  prev: Prev
+  next: Next
+  last_updated: "Last updated: %s"

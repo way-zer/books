@@ -1,0 +1,23 @@
+title: WayZer的博客
+subtitle: "WayZer的博客"
+description: ""
+author: WayZer
+language: zh-cn
+timezone: 'asia/shanghai'
+
+url: https://wayzer.cf
+root: /
+permalink: blog/:year/:month/:title/
+archive_dir: blog
+code_dir: downloads/code
+new_post_name: :year-:month-:day-:title.md # File name of new posts
+post_asset_folder: true
+per_page: 0
+
+theme: navy
+
+highlight:
+  enable: true
+  line_number: false
+
+github: way-zer
