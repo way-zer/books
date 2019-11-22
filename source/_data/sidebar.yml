@@ -3,3 +3,4 @@ docs1:
     foreword: index.html
   charpter1: 
     page0: charpter1/page0.html
+    page1: charpter1/page1.html
