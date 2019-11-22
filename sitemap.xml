@@ -2,37 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.wayzer.cf/blog/2019/11/Init/</loc>
+    <loc>https://blog.wayzer.cf/index.html</loc>
     
-    <lastmod>2019-11-22T10:58:55.962Z</lastmod>
+    <lastmod>2019-11-22T14:34:16.738Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.wayzer.cf/index.html</loc>
+    <loc>https://blog.wayzer.cf/blog/2019/11/Init/</loc>
     
-    <lastmod>2019-11-22T10:58:55.962Z</lastmod>
+    <lastmod>2019-11-22T14:34:16.734Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.wayzer.cf/about/index.html</loc>
     
-    <lastmod>2019-11-22T10:58:55.962Z</lastmod>
+    <lastmod>2019-11-22T14:34:16.734Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.wayzer.cf/docs1/index.html</loc>
     
-    <lastmod>2019-11-22T10:58:55.962Z</lastmod>
+    <lastmod>2019-11-22T14:34:16.734Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.wayzer.cf/docs1/charpter1/page0.html</loc>
     
-    <lastmod>2019-11-22T10:58:55.962Z</lastmod>
+    <lastmod>2019-11-22T14:34:16.734Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.wayzer.cf/docs1/charpter1/page1.html</loc>
+    
+    <lastmod>2019-11-22T14:34:16.734Z</lastmod>
     
   </url>
   
