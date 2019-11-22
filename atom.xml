@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>WayZer的博客</title>
+  
+  <subtitle>WayZer的博客</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.wayzer.cf/"/>
+  <updated>2019-11-22T10:58:55.962Z</updated>
+  <id>https://blog.wayzer.cf/</id>
+  
+  <author>
+    <name>WayZer</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初始化博客</title>
+    <link href="https://blog.wayzer.cf/blog/2019/11/Init/"/>
+    <id>https://blog.wayzer.cf/blog/2019/11/Init/</id>
+    <published>2019-11-21T16:00:00.000Z</published>
+    <updated>2019-11-22T10:58:55.962Z</updated>
+    
+    <content type="html"><![CDATA[<p>改编自Hexo官网，正在建设中</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;改编自Hexo官网，正在建设中&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
