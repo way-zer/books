@@ -5,7 +5,7 @@ author: WayZer
 language: zh-cn
 timezone: 'asia/shanghai'
 
-url: https://wayzer.cf
+url: https://blog.wayzer.cf
 root: /
 permalink: blog/:year/:month/:title/
 archive_dir: blog

@@ -2,9 +2,7 @@
 
 'use strict';
 
-const { basename } = require('path');
 const cheerio = require('cheerio');
-const lunr = require('lunr');
 const full_url_for = hexo.extend.helper.get('full_url_for').bind(hexo);
 
 const localizedPath = ['wait to localize'];
@@ -12,13 +10,13 @@ const localizedPath = ['wait to localize'];
 hexo.extend.helper.register('page_nav', function() {
   const type = this.page.canonical_path.split('/')[0];
   const sidebar = this.site.data.sidebar[type];
-  const path = this.page.canonical_path.substr(type.length+1);
+  const path = this.page.canonical_path.substr(type.length + 1);
   const list = {};
   const prefix = 'sidebar.' + type + '.';
 
   for (let i in sidebar) {
     for (let j in sidebar[i]) {
-      list[sidebar[i][j]] = i+"."+j;
+      list[sidebar[i][j]] = i + '.' + j;
     }
   }
 
@@ -40,7 +38,7 @@ hexo.extend.helper.register('page_nav', function() {
 hexo.extend.helper.register('doc_sidebar', function(className) {
   const type = this.page.canonical_path.split('/')[0];
   const sidebar = this.site.data.sidebar[type];
-  const path = this.page.canonical_path.substr(type.length+1);
+  const path = this.page.canonical_path.substr(type.length + 1);
   let result = '';
   const self = this;
   const prefix = 'sidebar.' + type + '.';
@@ -50,12 +48,12 @@ hexo.extend.helper.register('doc_sidebar', function(className) {
   }
 
   for (let [title, menu] of Object.entries(sidebar)) {
-    result += '<strong class="' + className + '-title">' + self.__(prefix + title +".title") + '</strong>';
+    result += '<strong class="' + className + '-title">' + self.__(prefix + title + '.title') + '</strong>';
 
     for (let [text, link] of Object.entries(menu)) {
       let itemClass = className + '-link';
       if (link === path) itemClass += ' current';
-      result += `<a href="/${type}/${link}" class="${itemClass}">${self.__(prefix + title +"."+ text)}</a>`
+      result += `<a href="/${type}/${link}" class="${itemClass}">${self.__(prefix + title + '.' + text)}</a>`;
     }
   }
 
