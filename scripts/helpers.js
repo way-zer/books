@@ -9,22 +9,21 @@ hexo.extend.helper.register('page_nav', function() {
   const type = this.page.canonical_path.split('/')[0];
   const path = this.page.canonical_path.substr(type.length + 1);
   const data = this.site.data.book[type].tree;
-  const titles = {}
+  const titles = {};
   this.site.pages.forEach(page => {
-    if(page.path.startsWith(type+'/')){
-      titles[page.path.substring(type.length+1,page.path.length-5)]=page.title;
+    if (page.path.startsWith(type + '/')) {
+      titles[page.path.substring(type.length + 1, page.path.length - 5)] = page.title;
     }
   });
-  function getTitle(file){
-    return titles[file]||"NOTFOUND";
+  function getTitle(file) {
+    return titles[file] || 'NOTFOUND';
   }
 
   const list = {};
-  for(let item of Object.values(data)){
-    if(typeof item === 'string')
-      item = [item];
+  for (let item of Object.values(data)) {
+    if (typeof item === 'string') { item = [item]; }
     for (let file of item) {
-      list[file+".html"]=getTitle(file);
+      list[file + '.html'] = getTitle(file);
     }
   }
 
@@ -32,10 +31,10 @@ hexo.extend.helper.register('page_nav', function() {
   const index = keys.indexOf(path);
   let result = '';
   if (index > 0) {
-    result += `<a href="/${type}/${keys[index - 1]}" class="article-footer-prev" title="${list[keys[index - 1]]}"><i class="fa fa-chevron-left"></i><span>${this.__('page.prev')}</span></a>`;
+    result += `<a href="${this.url_for(`${type}/${keys[index - 1]}`)}" class="article-footer-prev" title="${list[keys[index - 1]]}"><i class="fa fa-chevron-left"></i><span>${this.__('page.prev')}</span></a>`;
   }
   if (index < keys.length - 1) {
-    result += `<a href="/${type}/${keys[index + 1]}" class="article-footer-next" title="${list[keys[index + 1]]}"><span>${this.__('page.next')}</span><i class="fa fa-chevron-right"></i></a>`;
+    result += `<a href="${this.url_for(`${type}/${keys[index + 1]}`)}" class="article-footer-next" title="${list[keys[index + 1]]}"><span>${this.__('page.next')}</span><i class="fa fa-chevron-right"></i></a>`;
   }
   return result;
 });
@@ -44,24 +43,23 @@ hexo.extend.helper.register('doc_sidebar', function(className) {
   const type = this.page.canonical_path.split('/')[0];
   const path = this.page.canonical_path.substr(type.length + 1);
   const tree = this.site.data.book[type].tree;
-  const titles = {}
+  const titles = {};
   this.site.pages.forEach(page => {
-    if(page.path.startsWith(type+'/')){
-      titles[page.path.substring(type.length+1,page.path.length-5)]=page.title;
+    if (page.path.startsWith(type + '/')) {
+      titles[page.path.substring(type.length + 1, page.path.length - 5)] = page.title;
     }
   });
-  function getTitle(file){
-    return titles[file]||"NOTFOUND";
+  function getTitle(file) {
+    return titles[file] || 'NOTFOUND';
   }
-  let result='';
-  for(let [title, item] of Object.entries(tree)){
-    if(typeof item === 'string')
-      item = [item];
+  let result = '';
+  for (let [title, item] of Object.entries(tree)) {
+    if (typeof item === 'string') { item = [item]; }
     result += '<strong class="' + className + '-title">' + title + '</strong>';
     for (let file of item) {
       let itemClass = className + '-link';
-      if (file+".html" === path) itemClass += ' current';
-      result += `<a href="/${type}/${file}.html" class="${itemClass}">${getTitle(file)}</a>`;
+      if (file + '.html' === path) itemClass += ' current';
+      result += `<a href="${this.url_for(`/${type}/${file}.html`)}" class="${itemClass}">${getTitle(file)}</a>`;
     }
   }
   return result;

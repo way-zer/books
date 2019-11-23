@@ -5,8 +5,8 @@ author: WayZer
 language: zh-cn
 timezone: 'asia/shanghai'
 
-url: https://blog.wayzer.cf
-root: /
+url: https://www.wayzer.cf
+root: /books/
 permalink: blog/:year/:month/:title/
 archive_dir: blog
 code_dir: downloads/code
