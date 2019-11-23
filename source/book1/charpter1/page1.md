@@ -1,6 +1,7 @@
 ---
 title: 1.1 Hello 世界!
 ---
+## 一句话Hello
 ```js
 console.log("Hello 世界");
 ```
@@ -13,6 +14,7 @@ console.log("Hello 世界");
 大多数的教程开头都会教你如何输出`Hello World!` 这里我采用了golang的风格输出了中英结合的`Hello 世界!`,告诉你JS是兼容中文的 ,有关`Hello World!`的历史, 感兴趣可以自己去查.
 {% endnote %}
 
+## sayHello
 {% note info TODOS %}
 - [ ] 函数型Hello World
 - [ ] 面向对象型Hello World
