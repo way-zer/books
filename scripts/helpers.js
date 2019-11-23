@@ -5,74 +5,74 @@
 const cheerio = require('cheerio');
 const full_url_for = hexo.extend.helper.get('full_url_for').bind(hexo);
 
-const localizedPath = ['wait to localize'];
-
 hexo.extend.helper.register('page_nav', function() {
   const type = this.page.canonical_path.split('/')[0];
-  const sidebar = this.site.data.sidebar[type];
   const path = this.page.canonical_path.substr(type.length + 1);
-  const list = {};
-  const prefix = 'sidebar.' + type + '.';
+  const data = this.site.data.book[type].tree;
+  const titles = {}
+  this.site.pages.forEach(page => {
+    if(page.path.startsWith(type+'/')){
+      titles[page.path.substring(type.length+1,page.path.length-5)]=page.title;
+    }
+  });
+  function getTitle(file){
+    return titles[file]||"NOTFOUND";
+  }
 
-  for (let i in sidebar) {
-    for (let j in sidebar[i]) {
-      list[sidebar[i][j]] = i + '.' + j;
+  const list = {};
+  for(let item of Object.values(data)){
+    if(typeof item === 'string')
+      item = [item];
+    for (let file of item) {
+      list[file+".html"]=getTitle(file);
     }
   }
 
   const keys = Object.keys(list);
   const index = keys.indexOf(path);
   let result = '';
-
   if (index > 0) {
-    result += `<a href="/${type}/${keys[index - 1]}" class="article-footer-prev" title="${this.__(prefix + list[keys[index - 1]])}"><i class="fa fa-chevron-left"></i><span>${this.__('page.prev')}</span></a>`;
+    result += `<a href="/${type}/${keys[index - 1]}" class="article-footer-prev" title="${list[keys[index - 1]]}"><i class="fa fa-chevron-left"></i><span>${this.__('page.prev')}</span></a>`;
   }
-
   if (index < keys.length - 1) {
-    result += `<a href="/${type}/${keys[index + 1]}" class="article-footer-next" title="${this.__(prefix + list[keys[index + 1]])}"><span>${this.__('page.next')}</span><i class="fa fa-chevron-right"></i></a>`;
+    result += `<a href="/${type}/${keys[index + 1]}" class="article-footer-next" title="${list[keys[index + 1]]}"><span>${this.__('page.next')}</span><i class="fa fa-chevron-right"></i></a>`;
   }
-
   return result;
 });
 
 hexo.extend.helper.register('doc_sidebar', function(className) {
   const type = this.page.canonical_path.split('/')[0];
-  const sidebar = this.site.data.sidebar[type];
   const path = this.page.canonical_path.substr(type.length + 1);
-  let result = '';
-  const self = this;
-  const prefix = 'sidebar.' + type + '.';
-
-  if (typeof sidebar === 'undefined') {
-    return '';
+  const tree = this.site.data.book[type].tree;
+  const titles = {}
+  this.site.pages.forEach(page => {
+    if(page.path.startsWith(type+'/')){
+      titles[page.path.substring(type.length+1,page.path.length-5)]=page.title;
+    }
+  });
+  function getTitle(file){
+    return titles[file]||"NOTFOUND";
   }
-
-  for (let [title, menu] of Object.entries(sidebar)) {
-    result += '<strong class="' + className + '-title">' + self.__(prefix + title + '.title') + '</strong>';
-
-    for (let [text, link] of Object.entries(menu)) {
+  let result='';
+  for(let [title, item] of Object.entries(tree)){
+    if(typeof item === 'string')
+      item = [item];
+    result += '<strong class="' + className + '-title">' + title + '</strong>';
+    for (let file of item) {
       let itemClass = className + '-link';
-      if (link === path) itemClass += ' current';
-      result += `<a href="/${type}/${link}" class="${itemClass}">${self.__(prefix + title + '.' + text)}</a>`;
+      if (file+".html" === path) itemClass += ' current';
+      result += `<a href="/${type}/${file}.html" class="${itemClass}">${getTitle(file)}</a>`;
     }
   }
-
   return result;
 });
 
 hexo.extend.helper.register('header_menu', function(className) {
-  const menu = this.site.data.menu;
+  const books = this.site.data.book;
   let result = '';
-  const self = this;
-  const lang = this.page.lang;
-  const isDefault = lang === 'zh-cn';
-
-  for (let [title, path] of Object.entries(menu)) {
-    if (!isDefault && ~localizedPath.indexOf(title)) path = lang + path;
-
-    result += `<a href="${self.url_for(path)}" class="${className}-link">${self.__('menu.' + title)}</a>`;
+  for (let [path, book] of Object.entries(books)) {
+    result += `<a href="${this.url_for(`/${path}/`)}" class="${className}-link">${book.name}</a>`;
   }
-
   return result;
 });
 

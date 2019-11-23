@@ -1,0 +1,7 @@
+book1:
+  name: '零基础JS教程'
+  tree:
+    '前言': foreword
+    '语法基础':
+    - charpter1/page0
+    - charpter1/page1
