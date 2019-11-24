@@ -94,16 +94,26 @@
 <blockquote class="note info"><strong class="note-title">Hello 世界</strong><p>大多数的教程开头都会教你如何输出<code>Hello World!</code> 这里我采用了golang的风格输出了中英结合的<code>Hello 世界!</code>,告诉你JS是兼容中文的 ,有关<code>Hello World!</code>的历史, 感兴趣可以自己去查.</p>
 </blockquote>
 
-<h2 id="sayHello" class="article-heading"><a href="#sayHello" class="headerlink" title="sayHello"></a>sayHello<a class="article-anchor" href="#sayHello" aria-hidden="true"></a></h2><blockquote class="note info"><strong class="note-title">TODOS</strong><ul>
-<li><input disabled type="checkbox"> 函数型Hello World</li>
-<li><input disabled type="checkbox"> 面向对象型Hello World</li>
-<li><input disabled type="checkbox"> 简单调试(看情况)</li>
-</ul>
+<h2 id="sayHello" class="article-heading"><a href="#sayHello" class="headerlink" title="sayHello"></a>sayHello<a class="article-anchor" href="#sayHello" aria-hidden="true"></a></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">word</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Hello "</span>+word+<span class="string">"!"</span>);</span><br><span class="line">&#125;</span><br><span class="line">sayHello(<span class="string">"World"</span>);</span><br><span class="line">sayHello(<span class="string">"世界"</span>);</span><br></pre></td></tr></table></figure>
+<blockquote class="note info"><strong class="note-title">进度太快了?</strong><p>没关系,在本节中,不要求看懂所有代码,只是给大家展示一下JS常见的几种模式.在后面的章节,我会具体介绍每一个语法点,不过再次,希望大家能尽自己所能,分析分析代码的含义.</p>
 </blockquote>
+<p>当我们需要多次重复一项功能时,我们通常会把它做成一个函数(例如: 对多个人<code>sayHello</code>)</p>
+<h2 id="Hello-Class" class="article-heading"><a href="#Hello-Class" class="headerlink" title="Hello Class"></a>Hello Class<a class="article-anchor" href="#Hello-Class" aria-hidden="true"></a></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params">person</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Hello "</span>+person.name+<span class="string">"!"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"How old are you?"</span>)</span><br><span class="line">    person.answer();</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="comment">//JS中成员属性声明可选, 建议写上</span></span><br><span class="line">    name;</span><br><span class="line">    age;</span><br><span class="line">    <span class="comment">//类构造器</span></span><br><span class="line">    <span class="keyword">constructor</span>(name,age)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">        <span class="keyword">this</span>.age=age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//成员函数</span></span><br><span class="line">    answer()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"I'm "</span>+<span class="keyword">this</span>.age);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//JS暂时没有私有成员,所有成员均是公开的,且允许修改</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> jack = <span class="keyword">new</span> Person(<span class="string">"Jack"</span>,<span class="number">18</span>);</span><br><span class="line">sayHello(jack);</span><br><span class="line"><span class="keyword">const</span> alice = <span class="keyword">new</span> Person(<span class="string">"Alice"</span>,<span class="number">16</span>);</span><br><span class="line">sayHello(alice);</span><br></pre></td></tr></table></figure>
+<p>此处的建立了一个类(<code>class</code>)名叫<code>Person</code>.并用这个类新建了两个对象(<code>jack</code>和<code>alice</code>),分别调用了<code>sayHello</code>.</p>
+<blockquote class="note info"><strong class="note-title">Identifier Person has already been declared</strong><p>如果你在控制台多次执行上述代码,可能会遇到该错误.<br>原因是,类不允许重复声明(函数可以)<br>刷新网页再运行或者不要再声明类(即不要<code>class Person{...}</code>)</p>
+</blockquote>
+
+<h2 id="小练习" class="article-heading"><a href="#小练习" class="headerlink" title="小练习"></a>小练习<a class="article-anchor" href="#小练习" aria-hidden="true"></a></h2><blockquote class="note info"><strong class="note-title">关于练习</strong><p>练习是对大家学习的巩固, 所有练习都是可以根据大家已学内容完成的.<strong>强烈建议</strong>大家认真完成.<br>未来会上线练习分享功能,让大家可以互相学习.</p>
+</blockquote>
+<ol>
+<li>直接在控制台打印第三个例子中的<code>jack</code>或<code>alice</code>,并研究输出内容(不必深究).(做完第三个例子后,直接输入<code>jack</code>回车即可)</li>
+<li>编程: 修改第三个例子,增加关于<code>Where are you from?</code>的对话</li>
+</ol>
+
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2019-11-23T08:01:05.237Z" itemprop="dateModified">上次更新：2019-11-23</time>
-                <a href="/books/book1/charpter1/page0.html" class="article-footer-prev" title="1.0初始控制台"><i class="fa fa-chevron-left"></i><span>上一页</span></a>
+                <time class="article-footer-updated" datetime="2019-11-24T04:39:48.801Z" itemprop="dateModified">上次更新：2019-11-24</time>
+                <a href="/books/book1/charpter1/page0.html" class="article-footer-prev" title="1.0初始控制台"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="/books/book1/charpter1/page2.html" class="article-footer-next" title="1.1 认识语句"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
             </div>
@@ -111,7 +121,7 @@
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一句话Hello"><span class="toc-text">一句话Hello</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sayHello"><span class="toc-text">sayHello</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一句话Hello"><span class="toc-text">一句话Hello</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sayHello"><span class="toc-text">sayHello</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-Class"><span class="toc-text">Hello Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小练习"><span class="toc-text">小练习</span></a></li></ol>
               <a href="#" id="article-toc-top">回到顶部</a>
             </div>
           </aside>
@@ -119,7 +129,7 @@
       </article>
       <aside id="sidebar" role="navigation">
   <div class="inner">
-    <strong class="sidebar-title">前言</strong><a href="/books/book1/foreword.html" class="sidebar-link">前言</a><strong class="sidebar-title">语法基础</strong><a href="/books/book1/charpter1/page0.html" class="sidebar-link">1.0初始控制台</a><a href="/books/book1/charpter1/page1.html" class="sidebar-link current">1.1 Hello 世界!</a>
+    <strong class="sidebar-title">前言</strong><a href="/books/book1/foreword.html" class="sidebar-link">前言</a><strong class="sidebar-title">语法基础</strong><a href="/books/book1/charpter1/page0.html" class="sidebar-link">1.0初始控制台</a><a href="/books/book1/charpter1/page1.html" class="sidebar-link current">1.1 Hello 世界!</a><a href="/books/book1/charpter1/page2.html" class="sidebar-link">1.1 认识语句</a>
   </div>
 </aside>
     </div>
@@ -149,7 +159,7 @@
       </li>
     </ul>
     
-      <strong class="mobile-nav-title">前言</strong><a href="/books/book1/foreword.html" class="mobile-nav-link">前言</a><strong class="mobile-nav-title">语法基础</strong><a href="/books/book1/charpter1/page0.html" class="mobile-nav-link">1.0初始控制台</a><a href="/books/book1/charpter1/page1.html" class="mobile-nav-link current">1.1 Hello 世界!</a>
+      <strong class="mobile-nav-title">前言</strong><a href="/books/book1/foreword.html" class="mobile-nav-link">前言</a><strong class="mobile-nav-title">语法基础</strong><a href="/books/book1/charpter1/page0.html" class="mobile-nav-link">1.0初始控制台</a><a href="/books/book1/charpter1/page1.html" class="mobile-nav-link current">1.1 Hello 世界!</a><a href="/books/book1/charpter1/page2.html" class="mobile-nav-link">1.1 认识语句</a>
     
   </div>
   <div id="mobile-lang-select-wrap">
