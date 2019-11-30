@@ -1,7 +1,5 @@
 language: node_js
 
-sudo: false
-
 node_js:
   - lts/*
 
@@ -11,17 +9,18 @@ cache:
     - node_modules
 
 install:
-  - npm ci
+  - yarn global add vuepress
+  - yarn install
 script:
-  - npm run docs:build
+  - vuepress build
 
 deploy:
   provider: pages
-  local-dir: public
-  skip-cleanup: true
   github-token: $GITHUB_TOKEN  
+  skip-cleanup: true
   keep-history: true
-  local_dir: docs/.vuepress/dist
+  local_dir: .vuepress/dist
   committer-from-gh: true
   on:
     branch: master
+
