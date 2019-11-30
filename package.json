@@ -1,0 +1,19 @@
+{
+  "name": "my-books",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "description": "myBooks using vuePress",
+  "author": "way-zer",
+  "private": true,
+  "repository": "github.com/way-zer/books/",
+  "scripts": {
+    "docs:build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.2.0",
+    "@vuepress/plugin-medium-zoom": "^1.2.0",
+    "@vuepress/plugin-pwa": "^1.2.0",
+    "vuepress": "^1.2.0"
+  }
+}
